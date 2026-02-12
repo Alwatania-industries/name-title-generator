@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>تصميم باسمك والمسمى الوظيفي</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; background: #fafafa; }
+  input { padding: 10px; margin: 5px; width: 280px; font-size: 16px; }
+  button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+  canvas { margin-top: 20px; border: 1px solid #ddd; }
+</style>
+</head>
+<body>
+<h2>اكتب اسمك والمسمى الوظيفي</h2>
+
+<input type="text" id="name" placeholder="الاسم / Name" />
+<br>
+<input type="text" id="title" placeholder="المسمى الوظيفي / Job title" />
+<br>
+<button onclick="generate()">عرض + تحميل</button>
+
+<canvas id="canvas" width="1200" height="675"></canvas>
+<br>
+<a id="downloadLink" href="#" download="Design.png">📥 تحميل النتيجة</a>
+
+<script>
+function generate() {
+    const name = document.getElementById('name').value;
+    const title = document.getElementById('title').value;
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const img = new Image();
+    img.src = "4f8abff9-0bf8-426f-ad87-f15e9d4f3190.png"; // اسم الصورة المرفوعة
+    img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        ctx.font = "36px Arial";
+        ctx.fillStyle = "#000";
+        ctx.textAlign = "center";
+
+        // مكان الاسم في التصميم (يمكن تعديل القيم حسب الشكل)
+        ctx.fillText(name, canvas.width / 2, 300);
+
+        // مكان المسمى الوظيفي
+        ctx.font = "30px Arial";
+        ctx.fillText(title, canvas.width / 2, 360);
+
+        // رابط تحميل الصورة
+        document.getElementById("downloadLink").href = canvas.toDataURL("image/png");
+    }
+}
+</script>
+</body>
+</html>
