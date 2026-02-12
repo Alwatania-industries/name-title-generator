@@ -49,7 +49,7 @@ function generate() {
     const ctx = canvas.getContext('2d');
 
     const img = new Image();
-    img.src = "4f8abff9-0bf8-426f-ad87-f15e9d4f3190.png"; // اسم الصورة الخلفية
+    img.src = "4f8abff9-0bf8-426f-ad87-f15e9d4f3190.png"; // الخلفية
     img.onload = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -62,14 +62,14 @@ function generate() {
         const ramadanY = 200;
         ctx.fillText("Ramadan Mubarak", canvas.width / 2, ramadanY);
 
-        // الاسم تحتها
+        // الاسم **تحتها مباشرة** بمسافة محددة
         ctx.font = "36px Arial";
-        const nameY = ramadanY + 50;
+        const nameY = ramadanY + 60; // +60px أسفل العبارة
         if(name) ctx.fillText(name, canvas.width / 2, nameY);
 
-        // المسمى الوظيفي تحت الاسم
+        // المسمى الوظيفي تحت الاسم مباشرة
         ctx.font = "30px Arial";
-        const titleY = nameY + 40;
+        const titleY = nameY + 40; // +40px أسفل الاسم
         if(title) ctx.fillText(title, canvas.width / 2, titleY);
 
         // رابط تحميل الصورة
